@@ -50,3 +50,26 @@ GO
 -- Q15: Dung CASE WHEN de phan loai Account thanh nhom quy mo theo numberofemployees:
 --      < 50 -> 'Small', 50-200 -> 'Medium', > 200 -> 'Large'.
 --      Hien thi name, numberofemployees va cot nhom moi ten "size_segment".
+
+
+-- Q16: Lay cac Lead co leadsourcecode la 'Web' hoac 'Referral', VA chua duoc qualify
+--      (qualifiedon con NULL). Hien thi fullname, companyname, leadsourcecode, estimatedvalue,
+--      sap xep theo estimatedvalue giam dan.
+
+
+-- Q17: Lay cac Account KHONG o Vietnam va co revenue >= 10,000,000. Hien thi name, country,
+--      revenue, sap xep theo name tang dan.
+
+
+-- Q18: Lay cac Incident co prioritycode = 'High' VA statuscode KHONG phai 'Resolved' cung
+--      khong phai 'Cancelled' (dung NOT IN). Hien thi title, prioritycode, statuscode.
+
+
+-- Q19: Lay cac Account co ten quoc gia (country) dai dung 7 ky tu, dung LIKE voi ky tu dai
+--      dien "_" (khong duoc dung ham LEN). Hien thi name, country.
+
+
+-- Q20: Dung CASE WHEN phan loai Lead theo estimatedvalue thanh cot "priority_tier":
+--      < 20,000 -> 'Low', 20,000-100,000 -> 'Medium', > 100,000 -> 'High'.
+--      Chi lay Lead co statuscode = 'Open', hien thi fullname, estimatedvalue, priority_tier,
+--      sap xep theo estimatedvalue giam dan.

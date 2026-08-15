@@ -96,3 +96,45 @@ SELECT
     END AS size_segment
 FROM dbo.Account;
 GO
+
+-- Q16: Ket hop IN va IS NULL. "Chua qualify" the hien qua qualifiedon con NULL.
+SELECT fullname, companyname, leadsourcecode, estimatedvalue
+FROM dbo.Lead
+WHERE leadsourcecode IN (N'Web', N'Referral') AND qualifiedon IS NULL
+ORDER BY estimatedvalue DESC;
+GO
+
+-- Q17: <> de loai tru 1 gia tri, ket hop AND voi dieu kien so sanh.
+SELECT name, country, revenue
+FROM dbo.Account
+WHERE country <> N'Vietnam' AND revenue >= 10000000
+ORDER BY name ASC;
+GO
+
+-- Q18: NOT IN de loai tru nhieu gia tri cung luc, gon hon viet 2 dieu kien <> noi voi AND.
+SELECT title, prioritycode, statuscode
+FROM dbo.Incident
+WHERE prioritycode = N'High' AND statuscode NOT IN (N'Resolved', N'Cancelled');
+GO
+
+-- Q19: Meo hay: "_" trong LIKE dai dien cho DUNG 1 ky tu, nen chuoi 7 dau "_" lien tiep
+-- chi khop chuoi dai DUNG 7 ky tu - khong can ham LEN(). Trong data chi "Vietnam" dai 7.
+SELECT name, country
+FROM dbo.Account
+WHERE country LIKE N'_______';
+GO
+
+-- Q20: CASE WHEN ket hop WHERE loc truoc, ORDER BY dua tren cot goc (estimatedvalue),
+-- khong phai dua tren alias moi tao (priority_tier).
+SELECT
+    fullname,
+    estimatedvalue,
+    CASE
+        WHEN estimatedvalue < 20000 THEN N'Low'
+        WHEN estimatedvalue <= 100000 THEN N'Medium'
+        ELSE N'High'
+    END AS priority_tier
+FROM dbo.Lead
+WHERE statuscode = N'Open'
+ORDER BY estimatedvalue DESC;
+GO
